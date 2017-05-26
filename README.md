@@ -27,7 +27,7 @@ Do one of the following:
 
 **_Running_**
 1) On the main menu choose **Run | Edit Configurations**;
-2) Click **Add New Configuration** or (**Alt + Insert**) end select **Application**;
+2) Click **Add New Configuration** or (**Alt + Insert**) and select **Application**;
 3) Enter or select name of **Main Class** "com.mariazgoba.Main" and **Name** "ExpensesManagementApp" ;
 4) click **Apply**;
 5) Do one of the following:

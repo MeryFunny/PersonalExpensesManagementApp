@@ -7,10 +7,11 @@ import com.mariazgoba.handler.impl.ClearHandler;
 import com.mariazgoba.handler.impl.ListHandler;
 import com.mariazgoba.handler.impl.TotalHandler;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         CommandsHandler chain = setUpChain();
         Scanner scanner = new Scanner(System.in);
 

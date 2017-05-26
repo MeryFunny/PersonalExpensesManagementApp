@@ -41,12 +41,14 @@ public class Currency {
         this.rates = rates;
     }
 
+    public void addRate(String key, Double value) {
+        rates.put(key, value);
+    }
+
     @Override
     public String toString() {
         return "Currency [base=" + base + ", date=" + date + ", rates=" + rates + "]";
     }
 
-    public void addRate(String key, Double value) {
-        rates.put(key, value);
-    }
+
 }

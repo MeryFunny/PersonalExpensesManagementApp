@@ -2,6 +2,7 @@ package com.mariazgoba.services;
 
 import com.mariazgoba.model.Currency;
 import com.mariazgoba.model.Expense;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -15,7 +16,13 @@ public class ExchangeService {
     public ExchangeService(String baseCurrency) {
         this.baseCurrency = baseCurrency;
         String url = "http://api.fixer.io/latest?base=" + baseCurrency;
-        this.json = restTemplate.getForObject(url, Currency.class);
+        try {
+            this.json = restTemplate.getForObject(url, Currency.class);
+        }catch (HttpStatusCodeException e){
+            int statusCode = e.getStatusCode().value();
+            System.out.println("ERROR! HTTP problem. Code: "+ statusCode);
+            e.getStackTrace();
+        }
     }
 
     private static double getCurrencyValue(String currency, Currency json) {
