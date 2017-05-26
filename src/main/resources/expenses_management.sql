@@ -1,0 +1,10 @@
+-- Table: expenses
+CREATE TABLE expenses(
+  Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  Date VARCHAR(20) NOT NULL ,
+  Price DOUBLE NOT NULL ,
+  Currency VARCHAR(50) NOT NULL ,
+  Name VARCHAR(100) NOT NULL
+
+)
+  ENGINE = InnoDB;
