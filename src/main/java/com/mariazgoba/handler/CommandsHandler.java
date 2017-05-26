@@ -1,10 +1,5 @@
 package com.mariazgoba.handler;
 
-import java.util.List;
-
-/**
- * Created by Maria Zgoba on 24.05.2017.
- */
 public abstract class CommandsHandler {
 
     CommandsHandler next;

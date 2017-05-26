@@ -66,6 +66,11 @@ public class Expense {
     }
 
     @Override
+    public int hashCode() {
+        return getDate().hashCode();
+    }
+
+    @Override
     public String toString() {
         return date + "\n" + price + " " + currency + " " + name;
     }

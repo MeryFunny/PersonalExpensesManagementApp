@@ -5,8 +5,6 @@ import com.mariazgoba.enums.CommandEnums;
 import com.mariazgoba.handler.CommandsHandler;
 import com.mariazgoba.model.Expense;
 
-import java.util.List;
-
 public class AddHandler extends CommandsHandler {
 
     public void handleRequest(String inputs) {

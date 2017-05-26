@@ -26,7 +26,7 @@ public class ExpenseDao {
 
             System.out.println(expense.toString());
         } catch (SQLException e) {
-            System.out.println("ERROR!");
+            System.out.println("ERROR! Data was not added.");
             e.printStackTrace();
         }
     }
@@ -47,7 +47,7 @@ public class ExpenseDao {
             }
 
         } catch (SQLException e) {
-            System.out.println("ERROR!");
+            System.out.println("ERROR! Data was not selected.");
             e.printStackTrace();
         }
         return expenses;
@@ -58,10 +58,9 @@ public class ExpenseDao {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM expenses_management.expenses WHERE Date=?");
             preparedStatement.setDate(1, Date.valueOf(expenseDate));
             preparedStatement.executeUpdate();
-            System.out.println("DELETED");
 
         } catch (SQLException e) {
-            System.out.println("ERROR!");
+            System.out.println("ERROR! Data was not deleted.");
         }
     }
 }
