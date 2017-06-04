@@ -8,7 +8,7 @@ import com.mariazgoba.handler.impl.ListHandler;
 import com.mariazgoba.handler.impl.TotalHandler;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {

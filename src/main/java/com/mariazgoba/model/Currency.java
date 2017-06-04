@@ -49,6 +49,4 @@ public class Currency {
     public String toString() {
         return "Currency [base=" + base + ", date=" + date + ", rates=" + rates + "]";
     }
-
-
 }
