@@ -7,24 +7,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseDaoTestImpl implements ExpenseDao {
+    private List<Expense> expenses;
 
-    public ExpenseDaoTestImpl() {
-
+    public ExpenseDaoTestImpl(List<Expense> expenses) {
+        this.expenses = expenses;
     }
 
-    public void addExpense(Expense expense) {
-
+    public Expense addExpense(Expense expense) {
+        expenses = new ArrayList<>();
+        expenses.add(expense);
+        return expense;
     }
 
     public List<Expense> getAllExpenses() {
-        List<Expense> expenses = new ArrayList<>();
-
-        expenses.add(new Expense(1, "2017-06-03", 13.15, "PLN", "Pens"));
-        expenses.add(new Expense(2, "2017-06-03", 2, "EUR", "Pepsi"));
-        expenses.add(new Expense(3, "2017-06-04", 700, "CZK", "Dress"));
         return expenses;
     }
 
     public void deleteByDate(String expenseDate) {
+
+        for (int i = 0; i < expenses.size(); i++) {
+            if (expenses.get(i).getDate().equals(expenseDate)) {
+                expenses.remove(i);
+            }
+        }
+    }
+
+    public List<Expense> getExpensesByDate(String expenseDate) {
+
+        List<Expense> result = new ArrayList<>();
+        for (int i = 0; i < expenses.size(); i++) {
+            if (expenses.get(i).getDate().equals(expenseDate)) {
+                result.add(expenses.get(i));
+            }
+        }
+        return result;
     }
 }

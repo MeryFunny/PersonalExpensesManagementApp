@@ -15,8 +15,8 @@ public class TotalHandler extends ClearHandler {
     private String result;
 
     public TotalHandler() {
-        expenseDao = new ExpenseDaoImpl();
-        exchangeService = new ExchangeService();
+        this.expenseDao = new ExpenseDaoImpl();
+        this.exchangeService = new ExchangeService();
     }
 
     private static double calculateSum(List<Expense> expenses) {
@@ -34,7 +34,7 @@ public class TotalHandler extends ClearHandler {
 
             double total = calculateSum(exchangeService.exchangeToBaseCurrency(data[1], expenseDao.getAllExpenses()));
             System.out.println(new DecimalFormat("#0.00").format(total) + " " + data[1]);
-            result = String.format("%.2f", total);
+            this.result = String.format("%.2f", total);
 
         } else {
             if (getNext() != null) {

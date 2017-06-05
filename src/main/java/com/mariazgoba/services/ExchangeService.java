@@ -41,6 +41,4 @@ public class ExchangeService {
         }
         return expenses;
     }
-
-
 }

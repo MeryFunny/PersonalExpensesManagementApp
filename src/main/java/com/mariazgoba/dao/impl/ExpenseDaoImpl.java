@@ -15,7 +15,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
         connection = DatabaseUtil.getConnection();
     }
 
-    public void addExpense(Expense expense) {
+    public Expense addExpense(Expense expense) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO expenses_management.expenses( Date, Price, Currency, Name) VALUES (?,?,?,?)");
             preparedStatement.setDate(1, Date.valueOf(expense.getDate()));
@@ -24,11 +24,11 @@ public class ExpenseDaoImpl implements ExpenseDao {
             preparedStatement.setString(4, expense.getName());
             preparedStatement.executeUpdate();
 
-            System.out.println(expense.toString());
         } catch (SQLException e) {
             System.out.println("ERROR! Data was not added.");
             e.printStackTrace();
         }
+        return expense;
     }
 
     public List<Expense> getAllExpenses() {
@@ -38,6 +38,30 @@ public class ExpenseDaoImpl implements ExpenseDao {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM expenses_management.expenses");
             while (resultSet.next()) {
                 Expense expense = new Expense();
+                expense.setId(resultSet.getInt("Id"));
+                expense.setDate(resultSet.getDate("Date").toString());
+                expense.setPrice(resultSet.getDouble("Price"));
+                expense.setCurrency(resultSet.getString("Currency"));
+                expense.setName(resultSet.getString("Name"));
+                expenses.add(expense);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR! Data was not selected.");
+            e.printStackTrace();
+        }
+        return expenses;
+    }
+
+    public List<Expense> getExpensesByDate(String expenseDate) {
+        List<Expense> expenses = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM expenses_management.expenses WHERE Date=?");
+            preparedStatement.setDate(1, Date.valueOf(expenseDate));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Expense expense;
+            while (resultSet.next()) {
+                expense = new Expense();
                 expense.setId(resultSet.getInt("Id"));
                 expense.setDate(resultSet.getDate("Date").toString());
                 expense.setPrice(resultSet.getDouble("Price"));

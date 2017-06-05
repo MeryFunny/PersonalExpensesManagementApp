@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface ExpenseDao {
 
-    void addExpense(Expense expense);
+    Expense addExpense(Expense expense);
 
     List<Expense> getAllExpenses();
 
     void deleteByDate(String expenseDate);
+
+    List<Expense> getExpensesByDate(String expenseDate);
 }
